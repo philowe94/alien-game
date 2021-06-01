@@ -19,7 +19,7 @@ Heiankyo Alien is a classic PC/arcade game. It involves digging ditches to trap 
 
 ## Wireframe
 
-https://wireframe.cc/pro/edit/446629
+https://wireframe.cc/pro/pp/c05c7ef5f446629
 
 ## Timeline
 
