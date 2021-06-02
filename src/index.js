@@ -1,15 +1,23 @@
 // Imports
 import "./styles/index.scss";
+const Game = require("./game");
 
 //Test to see if JS is working
-console.log("Hello world");
+console.log("Hello worldd");
 
 //canvas research
 let canvas = document.getElementById('game-canvas');
 let ctx = canvas.getContext('2d');
 
-ctx.fillStyle = 'rgb(200, 0, 0)';
-ctx.fillRect(10,10,50,50);
-
-ctx.fillStyle = 'rgba(0, 0, 200, 0.5)';
-ctx.fillRect(30, 30, 50, 50);
+let game = new Game();
+canvas.width = game.WIDTH;
+canvas.height = game.HEIGHT;
+let grid = [
+    0,0,0,0.0,
+    0,1,0,1,0,
+    0,1,0,1,0,
+    0,0,1,0,0,
+    0,0,0,0,0,
+]
+game.addGrid(grid);
+game.render(ctx);
