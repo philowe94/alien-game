@@ -1,26 +1,68 @@
 const Player = require("./player");
+const Floor = require("./floor");
+const Wall = require("./wall");
 
 class Game {
-    constructor() {
-        this.WIDTH = 640;
-        this.HEIGHT = 480;
+    constructor(map, playerpos) {
+        this.VIEW_WIDTH = 640;
+        this.VIEW_HEIGHT = 477;
+        this.WIDTH = 10;
+        this.HEIGHT = 9;
         this.FPS = 60;
         this.BG_COLOR = "#ff5733";
+        this.DIRS = {
+            w: [0, -1],
+            a: [-1, 0],
+            s: [0, 1],
+            d: [1, 0]
+        }
 
-        this.grid = []
-        this.player = new Player();
+        this.map = [];
+        this.addMap(map);
+        this.player = new Player({game: this, pos: playerpos });
     }
 
-    addGrid(grid) {
-        this.grid = grid;
+    getMapTile(pos) {
+        return this.map[pos[0]][pos[1]];
     }
 
+    //given a grid, set this.grid to an array of the classes
+    addMap(map) {
+        this.map = map;
+
+        this.map.forEach( (row, row_i) => {
+            row.forEach( (square, col_i) => {
+                // 0 is floor
+                if (square === 0) {
+                    this.map[row_i][col_i] = new Floor();
+                
+                //1 is wall
+                } else if (square === 1) {
+                    this.map[row_i][col_i] = new Wall();
+                }
+            })
+        })
+    }
+
+    //render the current gamestate
     render(ctx) {
-        ctx.clearRect(0, 0, this.WIDTH, this.HEIGHT);
+        ctx.clearRect(0, 0, this.VIEW_WIDTH, this.VIEW_HEIGHT);
         ctx.fillStyle = this.BG_COLOR;
-        ctx.fillRect(0, 0, this.WIDTH, this.HEIGHT);
-        
-        this.player.draw(ctx);
+        ctx.fillRect(0, 0, this.VIEW_WIDTH, this.VIEW_HEIGHT);
+        //render the map
+        this.map.forEach( (row, row_i) => {
+            row.forEach( (square, col_i) => {
+                square.render(ctx);      
+            })
+        })
+    }
+
+    //bind keys to moves
+    bindKeys() {
+        Object.keys(this.DIRS).forEach( (k) => {
+            let move = this.DIRS[k];
+            key(k, function () { this.player.move(move)})
+        })
     }
 
 }

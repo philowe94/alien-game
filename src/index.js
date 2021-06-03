@@ -2,22 +2,29 @@
 import "./styles/index.scss";
 const Game = require("./game");
 
-//Test to see if JS is working
-console.log("Hello worldd");
 
 //canvas research
 let canvas = document.getElementById('game-canvas');
 let ctx = canvas.getContext('2d');
 
-let game = new Game();
-canvas.width = game.WIDTH;
-canvas.height = game.HEIGHT;
-let grid = [
-    0,0,0,0.0,
-    0,1,0,1,0,
-    0,1,0,1,0,
-    0,0,1,0,0,
-    0,0,0,0,0,
-]
-game.addGrid(grid);
+//set up game
+let map = [
+    [0,0,0,0.0,0,0,0,0,0],
+    [0,0,0,0.0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0.0,0,0,0,0,0],
+    [0,0,0,1,0,1,0,0,0,0],
+    [0,0,0,0.0,0,0,0,0,0],
+    [0,0,0,0.0,0,0,0,0,0],
+    [0,0,0,0.0,0,0,0,0,0],
+    [0,0,0,0.0,0,0,0,0,0],
+];
+let game = new Game(map, [1,1]);
+canvas.width = game.VIEW_WIDTH;
+canvas.height = game.VIEW_HEIGHT;
+
+
+
 game.render(ctx);
+
+game.player.move([0,-1]);
