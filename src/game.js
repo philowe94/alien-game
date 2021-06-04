@@ -10,12 +10,6 @@ class Game {
         this.HEIGHT = 9;
         this.FPS = 60;
         this.BG_COLOR = "#ff5733";
-        this.DIRS = {
-            w: [0, -1],
-            a: [-1, 0],
-            s: [0, 1],
-            d: [1, 0]
-        }
 
         this.map = [];
         this.addMap(map);
@@ -44,6 +38,14 @@ class Game {
         })
     }
 
+    moveObjects() {
+        //this.player.move();
+    }
+
+    step() {
+        this.moveObjects();
+    }
+
     //render the current gamestate
     render(ctx) {
         ctx.clearRect(0, 0, this.VIEW_WIDTH, this.VIEW_HEIGHT);
@@ -55,14 +57,8 @@ class Game {
                 square.render(ctx);      
             })
         })
-    }
 
-    //bind keys to moves
-    bindKeys() {
-        Object.keys(this.DIRS).forEach( (k) => {
-            let move = this.DIRS[k];
-            key(k, function () { this.player.move(move)})
-        })
+        this.player.render(ctx);
     }
 
 }

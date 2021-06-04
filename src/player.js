@@ -19,7 +19,6 @@ class Player {
     }
 
     move(dir) {
-
         let newPos = [
             this.pos[0] + dir[0],
             this.pos[1] + dir[1]
@@ -27,14 +26,10 @@ class Player {
         
         let newPosTile = this.game.getMapTile(newPos);
 
-        debugger
-
         if (newPosTile instanceof Floor) {
             this.pos = newPos;
         }
-
-        debugger
-
+        console.log(this.pos);
     }
 }
 
