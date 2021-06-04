@@ -1,9 +1,10 @@
 const Player = require("./player");
 const Floor = require("./floor");
 const Wall = require("./wall");
+const Alien = require("./alien");
 
 class Game {
-    constructor(map, playerpos) {
+    constructor(playerpos) {
         this.VIEW_WIDTH = 640;
         this.VIEW_HEIGHT = 477;
         this.WIDTH = 10;
@@ -11,13 +12,29 @@ class Game {
         this.FPS = 60;
         this.BG_COLOR = "#ff5733";
 
-        this.map = [];
-        this.addMap(map);
+        this.map = [
+            [0,1,0,0,0,0,0,0,0,0],
+            [0,1,0,0,0,0,1,1,0,1],
+            [0,0,0,0,0,0,0,0,0,0],
+            [1,0,0,0,1,1,1,0,0,0],
+            [1,0,0,0,0,1,0,0,0,0],
+            [0,0,0,1,0,0,0,0,1,1],
+            [0,1,0,1,0,1,1,0,0,0],
+            [0,0,0,0,0,1,0,0,0,0],
+            [0,0,1,1,0,0,0,0,0,0],
+        ];
+        this.addMap(this.map);
         this.player = new Player({game: this, pos: playerpos });
+        this.aliens = [
+            new Alien({game: this, pos: [3, 3]}),
+            new Alien({game: this, pos: [4, 4]}),
+            new Alien({game: this, pos: [5, 5]})
+        ];
+
     }
 
     getMapTile(pos) {
-        return this.map[pos[0]][pos[1]];
+        return this.map[pos[1]][pos[0]];
     }
 
     //given a grid, set this.grid to an array of the classes
@@ -28,18 +45,23 @@ class Game {
             row.forEach( (square, col_i) => {
                 // 0 is floor
                 if (square === 0) {
-                    this.map[row_i][col_i] = new Floor();
+                    
+                    this.map[row_i][col_i] = new Floor({pos: [col_i, row_i]});
                 
                 //1 is wall
                 } else if (square === 1) {
-                    this.map[row_i][col_i] = new Wall();
+                    this.map[row_i][col_i] = new Wall({pos: [col_i, row_i]});
                 }
             })
         })
     }
 
     moveObjects() {
-        //this.player.move();
+        this.player.move();
+        
+        this.aliens.forEach( (alien) => {
+            alien.move();
+        });
     }
 
     step() {
@@ -59,6 +81,9 @@ class Game {
         })
 
         this.player.render(ctx);
+        this.aliens.forEach( (alien) => {
+            alien.render(ctx);
+        })
     }
 
 }
