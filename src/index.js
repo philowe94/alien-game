@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     //set up game
 
-    let game = new Game([0,0]);
+    let game = new Game([1,0]);
     canvas.width = game.VIEW_WIDTH;
     canvas.height = game.VIEW_HEIGHT;
 
