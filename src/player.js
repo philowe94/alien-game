@@ -10,7 +10,7 @@ class Player {
         this.state = "FACING_DOWN";
         this.state_timer = 0;
         this.sprites = new Image();
-        this.sprites.src = '../assets/chibi-layered.png';
+        this.sprites.src = 'https://philowe94.github.io/heiankyo-alien/assets/chibi-layered.png';
 
         this.DIRS = {
             w: [0, -1],
