@@ -19,6 +19,9 @@ class GameView {
         Object.keys(this.DIRS).forEach( (k) => {            
             key(k, () => this.game.player.set_state(k))
         })
+
+        key("k", () => this.game.player.set_state("k"));
+        key("j", () => this.game.player.set_state("j"));
     }
 
     //run the game

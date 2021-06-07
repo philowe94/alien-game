@@ -6,7 +6,7 @@ const Alien = require("./alien");
 class Game {
     constructor(playerpos) {
         this.VIEW_WIDTH = 640;
-        this.VIEW_HEIGHT = 477;
+        this.VIEW_HEIGHT = 576;
         this.WIDTH = 10;
         this.HEIGHT = 9;
         this.FPS = 60;
@@ -26,15 +26,34 @@ class Game {
         this.addMap(this.map);
         this.player = new Player({game: this, pos: playerpos });
         this.aliens = [
-            new Alien({game: this, pos: [3, 3]}),
+            new Alien({game: this, pos: [0, 8]}),
             new Alien({game: this, pos: [4, 4]}),
             new Alien({game: this, pos: [5, 5]})
         ];
 
     }
 
+    gameOver() {
+        this.player = [];
+    }
+
+    // [ horizontal, vertical ]
     getMapTile(pos) {
-        return this.map[pos[1]][pos[0]];
+        if(pos) {
+            return this.map[pos[1]][pos[0]];
+        }
+    }
+
+    // returns true if pos is on the board, false if otherwise
+    isLegalPosition(pos) {
+        if (pos) {
+            if( pos[0] >= 0 && pos[0] < this.map[0].length) {
+                if ( pos[1] >= 0 && pos[1] < this.map.length) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     //given a grid, set this.grid to an array of the classes
@@ -80,6 +99,7 @@ class Game {
             })
         })
 
+        //render the actors
         this.player.render(ctx);
         this.aliens.forEach( (alien) => {
             alien.render(ctx);
