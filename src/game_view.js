@@ -22,12 +22,12 @@ class GameView {
 
         key("k", () => this.game.player.set_state("k"));
         key("j", () => this.game.player.set_state("j"));
+        key("enter", () => this.game.start());
     }
 
     //run the game
     start() {
         this.bindKeys();
-
         requestAnimationFrame(this.animate.bind(this));
     };
 

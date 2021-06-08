@@ -31,6 +31,8 @@ class Game {
             new Alien({game: this, pos: [5, 5]})
         ];
 
+        this.view = 0;
+
     }
 
     gameOver() {
@@ -84,28 +86,53 @@ class Game {
     }
 
     step() {
-        this.moveObjects();
+
+        if (this.view === 1) {
+            this.moveObjects();
+        }
+    }
+
+    start() {
+        this.view = 1;
     }
 
     //render the current gamestate
     render(ctx) {
-        ctx.clearRect(0, 0, this.VIEW_WIDTH, this.VIEW_HEIGHT);
-        ctx.fillStyle = this.BG_COLOR;
-        ctx.fillRect(0, 0, this.VIEW_WIDTH, this.VIEW_HEIGHT);
-        //render the map
-        this.map.forEach( (row, row_i) => {
-            row.forEach( (square, col_i) => {
-                square.render(ctx);      
+
+        if (this.view === 0) {
+            ctx.clearRect(0, 0, this.VIEW_WIDTH, this.VIEW_HEIGHT);
+            ctx.fillStyle = this.BG_COLOR;
+            ctx.fillRect(0, 0, this.VIEW_WIDTH, this.VIEW_HEIGHT);
+            //render the map
+            this.map.forEach( (row, row_i) => {
+                row.forEach( (square, col_i) => {
+                    square.render(ctx);      
+                })
             })
-        })
-
-        //render the actors
-        this.player.render(ctx);
-        this.aliens.forEach( (alien) => {
-            alien.render(ctx);
-        })
+    
+            //render the actors
+            this.player.render(ctx);
+            this.aliens.forEach( (alien) => {
+                alien.render(ctx);
+            })
+        } else if (this.view === 1) {
+            ctx.clearRect(0, 0, this.VIEW_WIDTH, this.VIEW_HEIGHT);
+            ctx.fillStyle = this.BG_COLOR;
+            ctx.fillRect(0, 0, this.VIEW_WIDTH, this.VIEW_HEIGHT);
+            //render the map
+            this.map.forEach( (row, row_i) => {
+                row.forEach( (square, col_i) => {
+                    square.render(ctx);      
+                })
+            })
+    
+            //render the actors
+            this.player.render(ctx);
+            this.aliens.forEach( (alien) => {
+                alien.render(ctx);
+            })
+        }
     }
-
 }
 
 module.exports = Game;
