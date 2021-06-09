@@ -25,7 +25,7 @@ class Alien {
         }
         if (this.pos[0] === this.game.player.pos[0] &&
             this.pos[1] === this.game.player.pos[1]) {
-                this.game.gameOver();
+                this.game.player.state = "DEAD";
         } 
     }
 
