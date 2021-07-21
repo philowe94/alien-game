@@ -4,6 +4,14 @@
 
 Heiankyo Alien is a classic PC/arcade game. It involves digging ditches to trap aliens, and then covering up the hole on top of them. By trapping all aliens, the player moves on to the next stage.
 
+## Setup and Installation
+
+Clone repo
+
+`npm run watch`
+
+Open up index.html in your browser, reccomended to use Live Server from VSCode.
+
 ## Functionality and MVPs
 
 1. Render game map

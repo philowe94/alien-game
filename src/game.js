@@ -78,11 +78,16 @@ class Game {
     }
 
     moveObjects() {
-        this.player.move();
+        switch (this.state) {
+            case "PLAYING":
+                this.player.move();
+                this.aliens.forEach( (alien) => {
+                    alien.move();
+                });
+        default:
+            break;
+        }
         
-        this.aliens.forEach( (alien) => {
-            alien.move();
-        });
     }
 
 
@@ -121,8 +126,13 @@ class Game {
                 this.aliens.forEach( (alien) => {
                     alien.render(ctx);
                 })
+
+                
                 break;
             default:
+                ctx.clearRect(0, 0, this.VIEW_WIDTH, this.VIEW_HEIGHT);
+                ctx.font = "20px Georgia";
+                ctx.fillText("Press Enter to start the game", 10, 50);
                 break;
         }
     }
