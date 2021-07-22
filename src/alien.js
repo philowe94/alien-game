@@ -9,7 +9,6 @@ class Alien {
         this.state_timer = 0;
         this.sprites = new Image();
         this.sprites.src = 'https://philowe94.github.io/heiankyo-alien/assets/alien-sprite.png';
-
     }
 
     die() {
