@@ -164,6 +164,16 @@ class Alien {
                     );
                 ctx.fillStyle = this.color;
                 ctx.fill();
+
+                ctx.drawImage(
+                    this.sprites,
+                    32,0, //offset on sprite sheet
+                    16,16, //width/height on sprite sheet
+                    (this.pos[0] * 64), 
+                    (this.pos[1] * 64), 
+                    64, 
+                    64
+                );
                 break;
             case "MOVING_LEFT":
                 ctx.beginPath();
