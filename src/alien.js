@@ -7,6 +7,9 @@ class Alien {
         this.game = options.game;
         this.state = this.decideNewState();
         this.state_timer = 0;
+        this.sprites = new Image();
+        this.sprites.src = 'https://philowe94.github.io/heiankyo-alien/assets/alien-sprite.png';
+
     }
 
     die() {
