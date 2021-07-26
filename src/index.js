@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", function() {
     //canvas research
     let canvas = document.getElementById('game-canvas');
     let ctx = canvas.getContext('2d');
-
     //set up game
 
     let game = new Game([0,0]);

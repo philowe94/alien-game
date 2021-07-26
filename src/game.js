@@ -109,6 +109,8 @@ class Game {
     //render the current gamestate
     render(ctx) {
 
+        ctx.imageSmoothingEnabled = false;
+
         switch (this.state) {
             case "PLAYING":
                 ctx.clearRect(0, 0, this.VIEW_WIDTH, this.VIEW_HEIGHT);

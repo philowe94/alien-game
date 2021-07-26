@@ -152,64 +152,60 @@ class Alien {
     }
 
     render(ctx) {
+        let xoffset = 0;
+        if (this.state_timer > 8) {
+            xoffset = 16;
+        }
         switch (this.state) {
+            
             case "MOVING_UP":
-                ctx.beginPath();
-                ctx.arc(
-                    (this.pos[0] * 64) + (64/2), 
-                    (this.pos[1] * 64) + (64/2) - (this.state_timer * (64/16)),
-                    20, 
-                    2 * Math.PI,
-                    false
-                    );
-                ctx.fillStyle = this.color;
-                ctx.fill();
+
+                
 
                 ctx.drawImage(
                     this.sprites,
-                    32,0, //offset on sprite sheet
+                    xoffset, 0, //offset on sprite sheet
                     16,16, //width/height on sprite sheet
                     (this.pos[0] * 64), 
-                    (this.pos[1] * 64), 
+                    (this.pos[1] * 64) - (this.state_timer * (64/16)),
                     64, 
                     64
                 );
                 break;
             case "MOVING_LEFT":
-                ctx.beginPath();
-                ctx.arc(
-                    (this.pos[0] * 64) + (64/2) - (this.state_timer * (64/16)),
-                    (this.pos[1] * 64) + (64/2),
-                    20, 
-                    2 * Math.PI,
-                    false
-                    );
-                ctx.fillStyle = this.color;
-                ctx.fill();
+                ctx.drawImage(
+                    this.sprites,
+                    xoffset, 0, //offset on sprite sheet
+                    16,16, //width/height on sprite sheet
+                    (this.pos[0] * 64) - (this.state_timer * (64/16)), 
+                    (this.pos[1] * 64),
+                    64, 
+                    64
+                );
                 break;
             case "MOVING_DOWN":
-                ctx.beginPath();
-                ctx.arc(
-                    (this.pos[0] * 64) + (64/2),
-                    (this.pos[1] * 64) + (64/2) + (this.state_timer * (64/16)),
-                    20, 
-                    2 * Math.PI,
-                    false
-                    );
-                ctx.fillStyle = this.color;
-                ctx.fill();
+                ctx.drawImage(
+                    this.sprites,
+                    xoffset, 0, //offset on sprite sheet
+                    16,16, //width/height on sprite sheet
+                    (this.pos[0] * 64) , 
+                    (this.pos[1] * 64) + (this.state_timer * (64/16)),
+                    64, 
+                    64
+                );
+
                 break;
             case "MOVING_RIGHT":
-                ctx.beginPath();
-                ctx.arc(
-                    (this.pos[0] * 64) + (64/2) + (this.state_timer * (64/16)),
-                    (this.pos[1] * 64) + (64/2),
-                    20, 
-                    2 * Math.PI,
-                    false
-                    );
-                ctx.fillStyle = this.color;
-                ctx.fill();
+
+                ctx.drawImage(
+                    this.sprites,
+                    xoffset, 0, //offset on sprite sheet
+                    16,16, //width/height on sprite sheet
+                    (this.pos[0] * 64) + (this.state_timer * (64/16)), 
+                    (this.pos[1] * 64),
+                    64, 
+                    64
+                );
                 break;
             case "FILLING_TRAP":
                 ctx.beginPath();
