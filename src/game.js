@@ -57,7 +57,7 @@ class Game {
             new Alien({game: this, pos: [5, 5]})
         ];
 
-        this.STATE = "MAIN_MENU";
+        this.state = "LEVEL_START";
         this.current_level = 1;
         this.levels = [this.level1, this.level2, this.level3];
     }
@@ -76,6 +76,8 @@ class Game {
                 new Alien({game: this, pos: [4, 4]}),
                 new Alien({game: this, pos: [5, 5]})
             ];
+
+            this.state = "MAIN_MENU"
         }
     }
 
@@ -176,7 +178,7 @@ class Game {
                 }
                 
                 break;
-            default:
+            case "LEVEL_START":
 
                 //render the map
                 this.map.forEach( (row, row_i) => {
@@ -191,8 +193,38 @@ class Game {
                     alien.render(ctx);
                 })
 
-                ctx.font = "20px Georgia";
-                ctx.fillText("Press Enter to start the game", 10, 50);
+                ctx.fillStyle  = 'rgba(240, 242, 245, 0.7)';
+                ctx.fillRect(-5, 150, 700, 160);
+                ctx.strokeRect(-50, 150, 700, 160);
+                ctx.fillStyle = 'black';
+                ctx.font = "40px Noto Sans";
+                ctx.fillText(`Level ${this.current_level}`, 150, 220);
+                ctx.font = "20px Noto Sans";
+                ctx.fillText("Press Enter to start", 150, 270);
+                break;
+            case "VICTORY":
+
+                //render the map
+                this.map.forEach( (row, row_i) => {
+                    row.forEach( (square, col_i) => {
+                        square.render(ctx);      
+                    })
+                })
+        
+                //render the actors
+                this.player.render(ctx);
+                this.aliens.forEach( (alien) => {
+                    alien.render(ctx);
+                })
+
+                ctx.fillStyle  = 'rgba(240, 242, 245, 0.7)';
+                ctx.fillRect(-5, 150, 700, 160);
+                ctx.strokeRect(-50, 150, 700, 160);
+                ctx.fillStyle = 'black';
+                ctx.font = "40px Noto Sans";
+                ctx.fillText(`CONGRATULATIONS`, 150, 220);
+                ctx.font = "20px Noto Sans";
+                ctx.fillText("Thank you for playing!", 150, 270);
                 break;
         }
     }
