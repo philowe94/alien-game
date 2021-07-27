@@ -27,13 +27,6 @@ class Floor extends Tile {
     render(ctx) {
         switch (this.digLevel) {
             case 0:
-                // ctx.fillStyle = this.color;
-                // ctx.fillRect(
-                //     (this.pos[0] * 64), 
-                //     (this.pos[1] * 64), 
-                //     64, 
-                //     64
-                // );
 
                 ctx.drawImage(
                     this.sprites,

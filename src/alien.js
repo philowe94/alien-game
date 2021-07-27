@@ -220,16 +220,15 @@ class Alien {
                 ctx.fill();
                 break;
             case "TRAPPED":
-                ctx.beginPath();
-                ctx.arc(
-                    (this.pos[0] * 64) + (64/2),
-                    (this.pos[1] * 64) + (64/2),
-                    20, 
-                    2 * Math.PI,
-                    false
-                    );
-                ctx.fillStyle = this.color;
-                ctx.fill();
+                ctx.drawImage(
+                    this.sprites,
+                    32, 0, //offset on sprite sheet
+                    16,16, //width/height on sprite sheet
+                    (this.pos[0] * 64), 
+                    (this.pos[1] * 64),
+                    64, 
+                    64
+                );
                 break;
         }
 

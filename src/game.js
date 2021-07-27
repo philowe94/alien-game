@@ -58,11 +58,25 @@ class Game {
         ];
 
         this.STATE = "MAIN_MENU";
-
+        this.current_level = 1;
+        this.levels = [this.level1, this.level2, this.level3];
     }
 
     gameOver() {
         this.player = [];
+    }
+
+    goToNextLevel() {
+        if (this.current_level < 3) {
+            this.current_level += 1;
+            this.addMap(this.levels[this.current_level -1]);
+            this.player = new Player({game: this, pos: [0,0] });
+            this.aliens = [
+                new Alien({game: this, pos: [0, 8]}),
+                new Alien({game: this, pos: [4, 4]}),
+                new Alien({game: this, pos: [5, 5]})
+            ];
+        }
     }
 
     // [ horizontal, vertical ]
@@ -158,13 +172,25 @@ class Game {
                 
                 //check if all aliens are defeated
                 if(this.aliens.every((alien) => alien.state === "DEAD")) {
-                    
-                    this.addMap(this.level2);
+                    this.goToNextLevel();
                 }
                 
                 break;
             default:
-                ctx.clearRect(0, 0, this.VIEW_WIDTH, this.VIEW_HEIGHT);
+
+                //render the map
+                this.map.forEach( (row, row_i) => {
+                    row.forEach( (square, col_i) => {
+                        square.render(ctx);      
+                    })
+                })
+        
+                //render the actors
+                this.player.render(ctx);
+                this.aliens.forEach( (alien) => {
+                    alien.render(ctx);
+                })
+
                 ctx.font = "20px Georgia";
                 ctx.fillText("Press Enter to start the game", 10, 50);
                 break;
