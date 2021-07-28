@@ -25,36 +25,38 @@ class Game {
         ];
 
         this.level2 = [
-            [0,1,0,0,0,0,0,0,0,0],
-            [0,1,0,0,0,0,1,1,0,0],
+            [0,0,0,0,1,0,0,0,0,0],
+            [1,1,0,0,1,0,1,1,0,0],
             [0,0,0,0,0,0,0,0,0,1],
-            [1,0,0,0,1,1,1,0,0,0],
+            [1,0,1,0,0,1,1,0,0,0],
             [1,0,0,0,0,1,0,0,0,0],
             [0,0,0,1,0,0,0,0,1,1],
-            [0,1,0,1,0,1,1,0,0,0],
-            [0,0,0,0,0,1,0,0,0,0],
-            [0,0,1,1,0,0,0,0,0,0],
+            [0,0,0,1,0,1,0,0,0,0],
+            [0,1,0,0,0,1,0,1,0,1],
+            [0,1,0,1,0,0,0,1,0,0],
         ];
 
         this.level3 = [
             [0,1,0,0,0,0,0,0,0,0],
-            [0,1,0,0,0,0,1,1,0,1],
+            [0,1,0,0,0,1,1,1,0,1],
             [0,0,0,0,0,0,0,0,0,0],
-            [1,0,0,0,1,1,1,0,0,0],
-            [1,0,0,0,0,1,0,0,0,0],
-            [0,0,0,1,0,0,0,0,1,1],
-            [0,1,0,1,0,1,1,0,0,0],
-            [0,0,0,0,0,1,0,0,0,0],
-            [0,0,1,1,0,0,0,0,0,0],
+            [0,0,1,0,1,0,1,0,1,0],
+            [0,1,1,0,0,0,0,0,0,0],
+            [0,0,0,1,0,1,0,0,1,1],
+            [1,1,0,1,0,0,1,0,0,0],
+            [0,0,0,0,1,0,0,0,1,0],
+            [0,0,1,0,0,0,0,1,0,0],
         ];
 
 
         this.addMap(this.level1);
         this.player = new Player({game: this, pos: playerpos });
+
         this.aliens = [
             new Alien({game: this, pos: [0, 8]}),
             new Alien({game: this, pos: [4, 4]}),
-            new Alien({game: this, pos: [5, 5]})
+            new Alien({game: this, pos: [5, 5]}),
+
         ];
 
         this.state = "LEVEL_START";
@@ -62,22 +64,52 @@ class Game {
         this.levels = [this.level1, this.level2, this.level3];
     }
 
-    gameOver() {
-        this.player = [];
+    handleGameOver() {
+        this.player = new Player({game: this, pos: [0,0] });
+        
+        this.addMap(this.level1);
+        this.current_level = 1;
+
+        this.aliens = [
+            new Alien({game: this, pos: [0, 8]}),
+            new Alien({game: this, pos: [4, 4]}),
+            new Alien({game: this, pos: [5, 5]}),
+
+        ];
+
+        this.state = "LEVEL_START";
     }
 
     goToNextLevel() {
-        if (this.current_level < 3) {
+        if (this.current_level === 1) {
+
+            this.current_level += 1;
+            this.addMap(this.levels[this.current_level -1]);
+            this.player = new Player({game: this, pos: [0,0] });
+            this.aliens = [
+                new Alien({game: this, pos: [2, 8]}),
+                new Alien({game: this, pos: [3, 4]}),
+                new Alien({game: this, pos: [5, 5]}),
+                new Alien({game: this, pos: [5, 2]}),
+            ];
+            this.state = "LEVEL_START"
+
+        } else if (this.current_level === 2) {
+
             this.current_level += 1;
             this.addMap(this.levels[this.current_level -1]);
             this.player = new Player({game: this, pos: [0,0] });
             this.aliens = [
                 new Alien({game: this, pos: [0, 8]}),
                 new Alien({game: this, pos: [4, 4]}),
-                new Alien({game: this, pos: [5, 5]})
+                new Alien({game: this, pos: [5, 5]}),
+                new Alien({game: this, pos: [3, 6]}),
+                new Alien({game: this, pos: [6, 7]})
             ];
+            this.state = "LEVEL_START"
 
-            this.state = "MAIN_MENU"
+        } else if (this.current_level === 3) {
+            this.state = "VICTORY"
         }
     }
 
@@ -102,9 +134,10 @@ class Game {
 
     //given a grid, set this.grid to an array of the classes
     addMap(map) {
-        this.map = map;
+        this.map = [];
 
-        this.map.forEach( (row, row_i) => {
+        map.forEach( (row, row_i) => {
+            this.map[row_i] = [];
             row.forEach( (square, col_i) => {
                 // 0 is floor
                 if (square === 0) {
@@ -131,8 +164,6 @@ class Game {
         }
         
     }
-
-
 
     start() {
         this.state = "PLAYING"
@@ -175,6 +206,11 @@ class Game {
                 //check if all aliens are defeated
                 if(this.aliens.every((alien) => alien.state === "DEAD")) {
                     this.goToNextLevel();
+                }
+
+                //check if player is dead
+                if(this.player.state === "DEAD") {
+                    this.handleGameOver();
                 }
                 
                 break;

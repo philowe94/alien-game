@@ -41,46 +41,26 @@ class Floor extends Tile {
             case 1:
                 ctx.drawImage(
                     this.sprites,
-                    16,0,
+                    32,0,
                     16,16,
                     (this.pos[0] * 64),
                     (this.pos[1] * 64),
                     64,
                     64
                 );
-                ctx.beginPath();
-                ctx.arc(
-                    (this.pos[0] * 64) + (64/2), 
-                    (this.pos[1] * 64) + (64/2),
-                    20, 
-                    2 * Math.PI,
-                    false
-                    );
-                ctx.lineWidth = 1;
-                ctx.fillStyle = "#ffffff";
-                ctx.stroke();
+       
                 break;
             case 2:
                 ctx.drawImage(
                     this.sprites,
-                    16,0,
+                    64,0,
                     16,16,
                     (this.pos[0] * 64),
                     (this.pos[1] * 64),
                     64,
                     64
                 );
-                ctx.beginPath();
-                ctx.arc(
-                    (this.pos[0] * 64) + (64/2), 
-                    (this.pos[1] * 64) + (64/2),
-                    20, 
-                    2 * Math.PI,
-                    false
-                    );
-                ctx.lineWidth = 3;
-                ctx.fillStyle = "#ffffff";
-                ctx.stroke();
+
                 break;
             default:
                 break;

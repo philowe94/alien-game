@@ -45,7 +45,6 @@ class Player {
             }
             if (fillTile.digLevel >= 1) {
                 fillTile.fill();
-                console.log(digTile.digLevel);
             }
         }
     }
@@ -114,7 +113,7 @@ class Player {
         switch (this.state) {
             case "MOVING_UP":
                 this.state_timer += 1;
-                if (this.state_timer === 16) {
+                if (this.state_timer === 12) {
                     this.state_timer = 0;
                     this.pos = [this.pos[0], this.pos[1] - 1];
                     this.state = "FACING_UP";
@@ -123,7 +122,7 @@ class Player {
                 break;
             case "MOVING_LEFT":
                 this.state_timer += 1;
-                if (this.state_timer === 16) {
+                if (this.state_timer === 12) {
                     this.state_timer = 0;
                     this.pos = [this.pos[0] - 1, this.pos[1]];
                     this.state = "FACING_LEFT";
@@ -132,7 +131,7 @@ class Player {
                 break;
             case "MOVING_DOWN":
                 this.state_timer += 1;
-                if (this.state_timer === 16) {
+                if (this.state_timer === 12) {
                     this.state_timer = 0;
                     this.pos = [this.pos[0], this.pos[1] + 1];
                     this.state = "FACING_DOWN";
@@ -142,7 +141,7 @@ class Player {
 
             case "MOVING_RIGHT":
                 this.state_timer += 1;
-                if (this.state_timer === 16) {
+                if (this.state_timer === 12) {
                     this.state_timer = 0;
                     this.pos = [this.pos[0] + 1, this.pos[1]];
                     this.state = "FACING_RIGHT";
@@ -207,7 +206,7 @@ class Player {
                     80,0, //offset on sprite sheet
                     16,16, //width/height on sprite sheet
                     (this.pos[0] * 64) , 
-                    (this.pos[1] * 64) - (this.state_timer * (64/16)), 
+                    (this.pos[1] * 64) - (this.state_timer * (64/12)), 
                     64, 
                     64
                 );
@@ -217,7 +216,7 @@ class Player {
                     this.sprites,
                     64,0, //offset on sprite sheet
                     16,16, //width/height on sprite sheet
-                    (this.pos[0] * 64) - (this.state_timer * (64/16)), 
+                    (this.pos[0] * 64) - (this.state_timer * (64/12)), 
                     (this.pos[1] * 64), 
                     64, 
                     64
@@ -229,7 +228,7 @@ class Player {
                     48,0, //offset on sprite sheet
                     16,16, //width/height on sprite sheet
                     (this.pos[0] * 64) , 
-                    (this.pos[1] * 64) + (this.state_timer * (64/16)), 
+                    (this.pos[1] * 64) + (this.state_timer * (64/12)), 
                     64, 
                     64
                 );
@@ -239,7 +238,7 @@ class Player {
                     this.sprites,
                     160,0, //offset on sprite sheet
                     16,16, //width/height on sprite sheet
-                    (this.pos[0] * 64) + (this.state_timer * (64/16)), 
+                    (this.pos[0] * 64) + (this.state_timer * (64/12)), 
                     (this.pos[1] * 64), 
                     64, 
                     64
