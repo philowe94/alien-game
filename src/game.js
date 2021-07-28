@@ -115,7 +115,8 @@ class Game {
 
     // [ horizontal, vertical ]
     getMapTile(pos) {
-        if(pos) {
+        if(pos && this.isLegalPosition(pos)) {
+
             return this.map[pos[1]][pos[0]];
         }
     }

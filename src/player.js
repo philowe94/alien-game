@@ -71,26 +71,50 @@ class Player {
             switch (k) {
                 case "w":
                     nextPos = [this.pos[0], this.pos[1] - 1]
-                    if (this.game.getMapTile([this.pos[0], this.pos[1] - 1]) instanceof Floor){
-                        this.state = "MOVING_UP";
+                    if (this.game.getMapTile(nextPos) instanceof Floor){
+                        if (this.game.getMapTile(nextPos).digLevel === 0) {
+                            this.state = "MOVING_UP";
+                        } else {
+                            this.state = "FACING_UP";
+                        }
+                    } else {
+                        this.state = "FACING_UP";
                     }
                     break;
                 case "a":
                     nextPos = [this.pos[0] - 1, this.pos[1] ];
                     if (this.game.getMapTile(nextPos) instanceof Floor){
-                        this.state = "MOVING_LEFT";
+                        if (this.game.getMapTile(nextPos).digLevel === 0) {
+                            this.state = "MOVING_LEFT";
+                        } else {
+                            this.state = "FACING_LEFT";
+                        }
+                    } else {
+                        this.state = "FACING_LEFT";
                     }
                     break;
                 case "s":
                     nextPos = [this.pos[0], this.pos[1] + 1];
                     if (this.game.getMapTile(nextPos) instanceof Floor){
-                        this.state = "MOVING_DOWN";
+                        if (this.game.getMapTile(nextPos).digLevel === 0) {
+                            this.state = "MOVING_DOWN";
+                        } else {
+                            this.state = "FACING_DOWN";
+                        }
+                    } else {
+                        this.state = "FACING_DOWN";
                     }
                     break;
                 case "d":
                     nextPos = [this.pos[0] + 1, this.pos[1]];
                     if (this.game.getMapTile(nextPos) instanceof Floor){
-                        this.state = "MOVING_RIGHT";
+                        if (this.game.getMapTile(nextPos).digLevel === 0) {
+                            this.state = "MOVING_RIGHT";
+                        } else {
+                            this.state = "FACING_RIGHT";
+                        }
+                    } else {
+                        this.state = "FACING_RIGHT";
                     }
                     break;
                 case "k":
