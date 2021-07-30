@@ -11,16 +11,19 @@
 
 <body>
     <navbar id="page-header">
-
-        <h1>Alien Game</h1>
-        <div>
-            <a target="_blank" href="https://github.com/philowe94/">
-                <i class="fab fa-github"></i>
-            </a>
-            <a target="_blank" href="https://www.linkedin.com/in/philip-lowe-274b9a9a/">
-                <i class="fab fa-linkedin-in"></i>
-            </a>
+        <div id="header-content">
+            <h1>Alien Game</h1>
+            <h2>by Philip Lowe</h2>
+            <!-- <div>
+                <a target="_blank" href="https://github.com/philowe94/">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a target="_blank" href="https://www.linkedin.com/in/philip-lowe-274b9a9a/">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div> -->
         </div>
+        
     </navbar>
     <div id="game-content">
         <div id="game-container">
@@ -28,13 +31,35 @@
     
             </canvas>
         </div>
-        <div id="instructions-contaner">
+        <div id="instructions-container">
 
-            <ol id="instructions">
-                <li>Move with WASD.</li> 
-                <li>Dig with K. Dig twice to trap aliens!</li>
-                <li>Fill with J. Fill trapped aliens to win!</li>
-            </ol>
+            <div id="how-to-play-box" class="info-box">
+                <h2>How To Play</h2>
+                    <p>Move with WASD.</p> 
+                    <p>Dig with K. Dig twice to trap aliens!</p>
+                    <p>Fill with J. Fill trapped aliens to win!</p>
+            </div>
+            
+        </div>
+    </div>
+    <div id="info-container">
+        
+        <div id="credits-box" class="info-box">
+            <h2>Credits</h2>
+                <p><a href="https://levernote.herokuapp.com/">Javascript Source Code</a> and alien sprites by me</p>
+                <p><a href="https://route1rodent.itch.io/16x16-rpg-character-sprite-sheet?download">
+                    Player character sprites</a> by route1rodent</p>
+                <p><a href="https://monkeyimage.itch.io/outdoors-gameboy-tileset">Environment sprites</a> by MonkeyImage</p>
+                <p>Based on the classic <a href="https://en.wikipedia.org/wiki/Heiankyo_Alien">Heiankyo Alien</a>
+                     designed by the University of Tokyo's Theoretical Science Group (TSG) in 1979</p>
+        </div>
+        <div id="more-from-phil-box" class="info-box">
+            <h2>More from Phil</h2>
+            <p><a href="https://levernote.herokuapp.com/">Levernote</a> </p>
+            <p><a href="http://netzero-application.herokuapp.com/#/">NetZero</a></p>
+            <p><a href="https://github.com/philowe94">Github</a></p>
+            <p><a href="http://netzero-application.herokuapp.com/#/">NetZero</a></p>
+            <p><a href="https://www.linkedin.com/in/philip-lowe-274b9a9a/">LinkedIn</a></p>
         </div>
     </div>
     
