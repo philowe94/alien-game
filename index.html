@@ -22,16 +22,22 @@
             </a>
         </div>
     </navbar>
-    <div id="game-container">
-        <canvas id="game-canvas" >
+    <div id="game-content">
+        <div id="game-container">
+            <canvas id="game-canvas" >
+    
+            </canvas>
+        </div>
+        <div id="instructions-contaner">
 
+            <ol id="instructions">
+                <li>Move with WASD.</li> 
+                <li>Dig with K. Dig twice to trap aliens!</li>
+                <li>Fill with J. Fill trapped aliens to win!</li>
+            </ol>
+        </div>
     </div>
-    </canvas>
-    <ol id="instructions">
-        <li>Move with WASD.</li> 
-        <li>Dig with K. Dig twice to trap aliens!</li>
-        <li>Fill with J. Fill trapped aliens to win!</li>
-    </ol>
+    
     <script src="./main.js"></script>
     <script src="./vendor/keymaster.js"></script>
 </body>
