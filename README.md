@@ -2,7 +2,7 @@
 
 ## Background and Overview
 
-Alien Game is a maze action game, based on the classic PC/arcade game Heiankyo Alien. It involves digging ditches to trap aliens, and then covering up the hole on top of them. By trapping all aliens, the player moves on to the next stage.
+[Alien Game](https://philowe94.github.io/alien-game/) is a maze action game, based on the classic PC/arcade game Heiankyo Alien. It involves digging ditches to trap aliens, and then covering up the hole on top of them. By trapping all aliens, the player moves on to the next stage.
 
 ![alien-game](/images/screenshot.png)
 
