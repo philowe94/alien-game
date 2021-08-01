@@ -116,3 +116,13 @@ https://wireframe.cc/pro/pp/c05c7ef5f446629
 
 In the future I would like to implement multiple enemy types, better enemy AI, more stages, and more environment/map tile types.
 
+## Credits
+
+Javascript Source Code and alien sprites by me
+
+(Player character sprites)[https://route1rodent.itch.io/16x16-rpg-character-sprite-sheet] by route1rodent
+
+(Environment sprites)[https://monkeyimage.itch.io/outdoors-gameboy-tileset] by MonkeyImage
+
+Based on the classic (Heiankyo Alien)[https://en.wikipedia.org/wiki/Heiankyo_Alien] designed by the University of Tokyo's Theoretical Science Group (TSG) in 1979
+
