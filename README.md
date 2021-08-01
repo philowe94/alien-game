@@ -112,3 +112,7 @@ Here is sample code from the Alien class demonstrating calculated animation. Eve
 
 https://wireframe.cc/pro/pp/c05c7ef5f446629
 
+## Future Additions
+
+In the future I would like to implement multiple enemy types, better enemy AI, more stages, and more environment/map tile types.
+
