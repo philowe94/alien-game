@@ -118,11 +118,11 @@ In the future I would like to implement multiple enemy types, better enemy AI, m
 
 ## Credits
 
-Javascript Source Code and alien sprites by me
+Javascript source code and alien sprites by me
 
-(Player character sprites)[https://route1rodent.itch.io/16x16-rpg-character-sprite-sheet] by route1rodent
+[Player character sprites](https://route1rodent.itch.io/16x16-rpg-character-sprite-sheet) by route1rodent
 
-(Environment sprites)[https://monkeyimage.itch.io/outdoors-gameboy-tileset] by MonkeyImage
+[Environment sprites](https://monkeyimage.itch.io/outdoors-gameboy-tileset) by MonkeyImage
 
-Based on the classic (Heiankyo Alien)[https://en.wikipedia.org/wiki/Heiankyo_Alien] designed by the University of Tokyo's Theoretical Science Group (TSG) in 1979
+Based on the classic [Heiankyo Alien](https://en.wikipedia.org/wiki/Heiankyo_Alien) designed by the University of Tokyo's Theoretical Science Group (TSG) in 1979
 
